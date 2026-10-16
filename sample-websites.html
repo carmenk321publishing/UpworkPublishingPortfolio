@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sample Websites | Carmen Khoury</title>
 <link rel="stylesheet" href="styles.css?v=3" />
+<style>
+  .site-tabs { padding: 0; margin: 28px 0 22px; justify-content: flex-start; max-width: none; }
+  .site-tabs .tab-button:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 3px; }
+  .site-panel[hidden] { display: none; }
+  .site-panel { animation: panel-fade-in 0.3s ease; }
+  @media (prefers-reduced-motion: reduce) { .site-panel { animation: none; } }
+  @media (max-width: 700px) { .site-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; } }
+</style>
 </head>
 <body>
 
@@ -23,11 +31,15 @@
     A collection of educational websites, worksheet hubs, and learning tools built to support instructors and
     learners. The concept, structure, and learning design of each one are mine, and I use AI to build the simple
     teaching websites and interactive activities to my specifications, then test and revise them myself.
-    Placeholder entries below can be replaced with live links, screenshots, and short descriptions as each project
-    is finalized.
   </p>
 
-  <div class="site-card site-card--feature">
+  <div class="project-tabs site-tabs" role="tablist" aria-label="Sample websites">
+    <button class="tab-button active" role="tab" id="tab-burrow" aria-controls="panel-burrow" aria-selected="true" data-hash="build-a-burrow">Build-a-Burrow</button>
+    <button class="tab-button" role="tab" id="tab-clil" aria-controls="panel-clil" aria-selected="false" tabindex="-1" data-hash="clil-lesson-lab">CLIL Lesson Lab</button>
+    <button class="tab-button" role="tab" id="tab-coach" aria-controls="panel-coach" aria-selected="false" tabindex="-1" data-hash="the-decodable-coach">The Decodable Coach</button>
+  </div>
+
+  <div class="site-card site-card--feature site-panel" role="tabpanel" id="panel-burrow" aria-labelledby="tab-burrow">
     <span class="sc-kicker">Instructional design · Interactive simulation</span>
     <h3>Build-a-Burrow: An Interactive ADDIE Simulation</h3>
     <p class="sc-lede">ADDIE is the five-phase process instructional designers use to build learning. Build-a-Burrow turns it into practice: new designers work one real course idea through every phase, building a hillside burrow as they go.</p>
@@ -55,7 +67,7 @@
     <p class="sc-credit"><span>Concept project</span> My concept, learning design, and testing. AI-built to my specification.</p>
   </div>
 
-  <div class="site-card site-card--feature">
+  <div class="site-card site-card--feature site-panel" role="tabpanel" id="panel-clil" aria-labelledby="tab-clil" hidden>
     <span class="sc-kicker">Learning design · Course-aware planning tool</span>
     <h3>CLIL Lesson Lab</h3>
     <p class="sc-lede">Content and Language Integrated Learning asks teachers to plan a subject and a language at once. CLIL Lesson Lab turns that into a repeatable workflow: set a course up once, then build lessons that carry forward how the last one actually went.</p>
@@ -82,15 +94,70 @@
     <p class="sc-credit"><span>Concept project</span> My concept, learning design, and testing. AI-built to my specification.</p>
   </div>
 
-  <div class="site-card">
-    <h3>Sample Website 3 — Placeholder Title</h3>
-    <p>Short description of the site's purpose, audience, and key features. Replace with real content and a link.</p>
+  <div class="site-card site-card--feature site-panel" role="tabpanel" id="panel-coach" aria-labelledby="tab-coach" hidden>
+    <span class="sc-kicker">Literacy design · Decodable text checker</span>
+    <h3>The Decodable Coach</h3>
+    <p class="sc-lede">Decodable texts only work when every word uses patterns students have already been taught. The Decodable Coach lets a teacher paste a draft, choose a lesson, and see whether the text fits that level, needs refining, or relies on patterns that come later in the sequence.</p>
+
+    <ol class="sc-phases" aria-label="The five steps">
+      <li><b>Choose level</b><span>Pick a UFLI-inspired lesson</span></li>
+      <li><b>Add draft</b><span>Paste text, list heart words</span></li>
+      <li><b>Review</b><span>Every word labelled</span></li>
+      <li><b>Refine</b><span>Swaps and a word bank</span></li>
+      <li><b>Save</b><span>Report and decoder (.doc)</span></li>
+    </ol>
+
+    <ul class="sc-points">
+      <li><b>Audience:</b> teachers, tutors, and interventionists writing decodable text for early readers</li>
+      <li><b>Feedback:</b> labels each word as target, review, heart word, coming soon, or coming later, and names the lesson after which the draft would fit</li>
+      <li><b>Outcome:</b> a full report and a clean student decoder, both as editable Word files, or a print-ready copy of the two</li>
+      <li><b>Built in:</b> a 128-lesson map, a taught heart-word list, light and dark modes, symbols alongside colour, and text that stays in the browser</li>
+      <li><b>Framing:</b> inspired by the UFLI Foundations scope and sequence, not officially aligned with or endorsed by UFLI</li>
+    </ul>
+
+    <div class="sc-links">
+      <a class="sc-btn sc-btn--primary" href="https://carmenk321publishing.github.io/The-Decodable-Coach/" target="_blank" rel="noopener">Live site <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <p class="sc-credit"><span>Concept project</span> My concept, learning design, and testing. AI-built to my specification.</p>
   </div>
 </div>
 
 <footer class="site-footer">
-  <p class="atlantis-credit"><img src="assets/img/atlantis-insignia.png?v=2" alt="Atlantis Learning Archives insignia"><span>Atlantis Learning Archives | A project by Carmen Khoury | © 2026</span></p>
+  <p class="atlantis-credit"><img src="assets/img/atlantis-insignia.png?v=2" alt="Atlantis Learning Archives insignia"><span>Atlantis Learning Archives | A project by Carmen Khoury | &copy; 2026</span></p>
 </footer>
 
+<script>
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.site-tabs [role="tab"]'));
+  function show(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () {
+      show(t);
+      if (history.replaceState) history.replaceState(null, '', '#' + t.dataset.hash);
+    });
+    t.addEventListener('keydown', function (e) {
+      var n = null;
+      if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+      else if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === 'Home') n = tabs[0];
+      else if (e.key === 'End') n = tabs[tabs.length - 1];
+      if (n) { e.preventDefault(); show(n, true); }
+    });
+  });
+  var h = location.hash.replace('#', '');
+  var start = tabs.filter(function (t) { return t.dataset.hash === h; })[0];
+  if (start) show(start);
+})();
+</script>
 </body>
 </html>
