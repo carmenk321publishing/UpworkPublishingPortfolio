@@ -6,12 +6,31 @@
 <title>Sample Websites | Carmen Khoury</title>
 <link rel="stylesheet" href="styles.css?v=3" />
 <style>
-  .site-tabs { padding: 0; margin: 28px 0 22px; justify-content: flex-start; max-width: none; }
+  .site-tabs { padding: 0; margin: 28px auto 22px; justify-content: center; max-width: none; }
   .site-tabs .tab-button:focus-visible { outline: 2px solid var(--accent-dark); outline-offset: 3px; }
   .site-panel[hidden] { display: none; }
-  .site-panel { animation: panel-fade-in 0.3s ease; }
+  .site-panel { animation: panel-fade-in 0.3s ease; overflow: hidden; }
   @media (prefers-reduced-motion: reduce) { .site-panel { animation: none; } }
-  @media (max-width: 700px) { .site-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; } }
+
+  /* Light-orange band behind the site button, matching the Publishing Samples download bands */
+  .site-band {
+    margin: 24px -32px -24px;
+    padding: 26px 32px 30px;
+    background: #fff4e8;
+    border-top: 2px solid #f6d9c4;
+    text-align: center;
+  }
+  .page-content .site-band a.sc-btn {
+    padding: 16px 34px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 700px) {
+    .site-tabs { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; }
+    .site-band { margin: 22px -20px -20px; padding: 22px 20px 26px; }
+  }
 </style>
 </head>
 <body>
@@ -19,7 +38,7 @@
 <header class="site-header">
   <div class="brand">Carmen Khoury &middot; Learning Materials</div>
   <nav class="site-nav">
-    <a href="index.html">Materials Portfolio</a>
+    <a href="index.html">Publishing Samples</a>
     <a href="sample-websites.html" class="active">Sample Websites</a>
     <a href="about.html">About Me</a>
   </nav>
@@ -59,12 +78,11 @@
       <li><b>Built in:</b> highlight-to-define glossary, saved progress, keyboard and screen reader support</li>
     </ul>
 
-    <div class="sc-links">
-      <a class="sc-btn sc-btn--primary" href="https://carmenk321publishing.github.io/ADDIE-Build-a-Burrow/" target="_blank" rel="noopener">Live simulation <span aria-hidden="true">&rarr;</span></a>
-      <a class="sc-btn" href="https://github.com/carmenk321publishing/ADDIE-Build-a-Burrow" target="_blank" rel="noopener">Project on GitHub</a>
-    </div>
-
     <p class="sc-credit"><span>Concept project</span> My concept, learning design, and testing. AI-built to my specification.</p>
+
+    <div class="site-band">
+      <a class="sc-btn sc-btn--primary" href="https://carmenk321publishing.github.io/ADDIE-Build-a-Burrow/" target="_blank" rel="noopener">Click here to experience the site</a>
+    </div>
   </div>
 
   <div class="site-card site-card--feature site-panel" role="tabpanel" id="panel-clil" aria-labelledby="tab-clil" hidden>
@@ -87,11 +105,11 @@
       <li><b>Built in:</b> worked examples with the audit left visible, and a 5 Cs check that reads any plan strand by strand</li>
     </ul>
 
-    <div class="sc-links">
-      <a class="sc-btn sc-btn--primary" href="https://portfolio-ck-clil.pplx.app/index.html" target="_blank" rel="noopener">Live site <span aria-hidden="true">&rarr;</span></a>
-    </div>
-
     <p class="sc-credit"><span>Concept project</span> My concept, learning design, and testing. AI-built to my specification.</p>
+
+    <div class="site-band">
+      <a class="sc-btn sc-btn--primary" href="https://portfolio-ck-clil.pplx.app/index.html" target="_blank" rel="noopener">Click here to experience the site</a>
+    </div>
   </div>
 
   <div class="site-card site-card--feature site-panel" role="tabpanel" id="panel-coach" aria-labelledby="tab-coach" hidden>
@@ -115,11 +133,11 @@
       <li><b>Framing:</b> inspired by the UFLI Foundations scope and sequence, not officially aligned with or endorsed by UFLI</li>
     </ul>
 
-    <div class="sc-links">
-      <a class="sc-btn sc-btn--primary" href="https://carmenk321publishing.github.io/The-Decodable-Coach/" target="_blank" rel="noopener">Live site <span aria-hidden="true">&rarr;</span></a>
-    </div>
-
     <p class="sc-credit"><span>Concept project</span> My concept, learning design, and testing. AI-built to my specification.</p>
+
+    <div class="site-band">
+      <a class="sc-btn sc-btn--primary" href="https://carmenk321publishing.github.io/The-Decodable-Coach/" target="_blank" rel="noopener">Click here to experience the site</a>
+    </div>
   </div>
 </div>
 
