@@ -7,7 +7,7 @@
 
 ## 🔗 Live Site
 
-**[Visit the live portfolio →](https://carmenk321publishing.github.io/UpWorkPublishingPortfolio/)**
+**[Visit the live portfolio →](https://carmenk321publishing.github.io/UpworkPublishingPortfolio/)**
 
 ---
 
